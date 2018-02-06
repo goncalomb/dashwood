@@ -1,0 +1,76 @@
+@font-face {
+    font-family: "Mono MMM 5";
+    src: url("monoMMM_5.ttf");
+}
+
+/* samaritan marquee */
+
+.dashwood-s-marquee {
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* samaritan marquee (.text) */
+
+.dashwood-s-marquee .text {
+    display: inline-block;
+    font-family: "Mono MMM 5";
+    font-size: 23px;
+    line-height: 23px;
+    min-height: 23px;
+    color: white;
+    white-space: nowrap;
+    transition-duration: 200ms;
+}
+
+.dashwood-s-marquee.mode-banner .text {
+    background-color: black;
+    letter-spacing: 8px;
+    padding: 5px 0px 5px 10px;
+    border-radius: 2px;
+}
+
+.dashwood-s-marquee.mode-text .text {
+    color: black;
+}
+
+/* samaritan marquee (.line) */
+
+.dashwood-s-marquee .line {
+    display: none;
+    margin: 0 auto;
+    width: 30px;
+    border-bottom: 2px solid black;
+    transition-duration: 200ms;
+}
+
+.dashwood-s-marquee.mode-text .line {
+    display: block;
+}
+
+/* samaritan marquee (.arrow) */
+
+.dashwood-s-marquee .arrow {
+    display: none;
+    border-bottom: 10px solid transparent;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+}
+
+.dashwood-s-marquee.mode-text .arrow {
+    display: inline-block;
+}
+
+.dashwood-s-marquee .arrow-animation {
+    border-bottom: 10px solid #330000;
+    -webkit-animation: samaritan-arrow-animation 1000ms alternate infinite linear;
+    animation: samaritan-arrow-animation 1000ms alternate infinite linear;
+}
+@-webkit-keyframes samaritan-arrow-animation {
+    from { border-bottom-color: #330000; }
+    to { border-bottom-color: #cc0000; }
+}
+@keyframes samaritan-arrow-animation {
+    from { border-bottom-color: #330000; }
+    to { border-bottom-color: #cc0000; }
+}
