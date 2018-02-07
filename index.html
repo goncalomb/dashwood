@@ -5,36 +5,56 @@
     * {
         box-sizing: border-box;
     }
-    .box {
-        width: 750px; height: 300px; border: gray solid 1px;
+    body {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .example {
+        display: flex;
+        height: 300px;
+    }
+    .example > :first-child {
+        flex-basis: 65%;
+        border: gray solid 1px;
+    }
+    .example > :last-child {
+        flex: 1;
     }
 </style>
-
-
-<h1>project dashwood</h1>
-
-<h2>dashwood.samaritan.marquee</h2>
-<div class="box" style="padding-top: 120px;">
-    <div id="s-marquee"></div>
-</div>
 <script>
-    var s_marquee = new dashwood.samaritan.marquee("s-marquee");
-
-    var i = 0;
-    var t = [
-       "s_marquee.static(\"TEST\")",
-       "s_marquee.banner(\"CONNECTION ESTABLISHED\")",
-       "s_marquee.banner(\"TEST\")",
-       "s_marquee.banner(\"TOTAL ACCESS ACHIEVED\")",
-       "s_marquee.clear()",
-       "s_marquee.static(\"CALCULATING RESPONSE\")",
-       "s_marquee.banner(\"TEST\")",
-       "s_marquee.static(\"TEST\")",
-       "s_marquee.clear()",
-    ]
-    setInterval(() => {
-        eval(t[i]);
-        i = (i + 1)%t.length;
-    }, 1000);
-
+    function TestControls(element) {
+        this._el = dashwood.getElement(element);
+    }
+    TestControls.prototype.newCodeButton = function(code) {
+        var btn = document.createElement("button");
+        btn.style.display = "block";
+        btn.innerText = code;
+        btn.onclick = () => {
+            eval(code);
+        };
+        this._el.appendChild(btn);
+    }
 </script>
+
+<body>
+    <h1>project dashwood</h1>
+
+    <h2>dashwood.samaritan.marquee</h2>
+    <div class="example">
+        <div style="padding-top: 120px;">
+            <div id="s-marquee"></div>
+        </div>
+        <div id="s-marquee-controls"></div>
+    </div>
+    <script>
+        var s_marquee = new dashwood.samaritan.marquee("s-marquee");
+        var s_marquee_test = new TestControls("s-marquee-controls");
+        s_marquee_test.newCodeButton("s_marquee.banner(\"CONNECTION ESTABLISHED\")");
+        s_marquee_test.newCodeButton("s_marquee.banner(\"TOTAL ACCESS ACHIEVED\")");
+        s_marquee_test.newCodeButton("s_marquee.banner(\"TEST\")");
+        s_marquee_test.newCodeButton("s_marquee.static(\"CALCULATING RESPONSE\")");
+        s_marquee_test.newCodeButton("s_marquee.static(\"TEST\")");
+        s_marquee_test.newCodeButton("s_marquee.clear()");
+    </script>
+
+</body>
