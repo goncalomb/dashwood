@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dashwood-demo {
+    display: flex;
+    height: 350px;
+}
+
+.dashwood-demo > :first-child {
+    flex-basis: 60%;
+    border: gray solid 1px;
+}
+
+.dashwood-demo > :last-child {
+    flex: 1;
+}
+
+.dashwood-demo table, .dashwood-demo table td:first-child {
+    width: 100%;
+}
+
+.dashwood-demo input {
+    width: 100%;
+}

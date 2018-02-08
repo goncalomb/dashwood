@@ -12,7 +12,7 @@
     }
 
     dashwood.createElement = function(tag, parent, clazz) {
-        var el = document.createElement("div");
+        var el = document.createElement(tag);
         if (clazz) {
             el.className = clazz;
         }
@@ -20,9 +20,9 @@
         return el;
     }
 
-    // samaritan.marquee
+    // samaritan.Marquee
 
-    samaritan.marquee = function(element) {
+    samaritan.Marquee = function(element) {
         this._el = dashwood.getElement(element);
         this._el.classList.add("dashwood-s-marquee");
         this._elText = dashwood.createElement("div", this._el, "text");
@@ -32,7 +32,7 @@
         this.waiting();
     }
 
-    samaritan.marquee.prototype._setMode = function(mode) {
+    samaritan.Marquee.prototype._setMode = function(mode) {
         clearTimeout(this._timeout);
         this._elText.style.opacity = "";
         if (mode == "banner") {
@@ -48,12 +48,12 @@
         }
     }
 
-    samaritan.marquee.prototype._resizeUnderline = function(off) {
+    samaritan.Marquee.prototype._resizeUnderline = function(off) {
         var w = parseFloat(window.getComputedStyle(this._elText).width);
         this._elLine.style.width = (w + off) + "px";
     }
 
-    samaritan.marquee.prototype.clear = function() {
+    samaritan.Marquee.prototype.clear = function() {
         this._setMode(null);
         if (this._elText.innerText == "-") {
             this._elText.innerText = "";
@@ -64,13 +64,13 @@
         }
     }
 
-    samaritan.marquee.prototype.banner = function(value) {
+    samaritan.Marquee.prototype.banner = function(value) {
         if (!value) return this.clear();
         this._setMode("banner");
         this._elText.innerText = value;
     }
 
-    samaritan.marquee.prototype.animate = function(text, staticEnd) {
+    samaritan.Marquee.prototype.animate = function(text, staticEnd) {
         if (!text) return this.clear();
         this._setMode("text");
         this._elArrow.classList.remove("arrow-animation");
@@ -99,7 +99,7 @@
         this._timeout = setTimeout(loop0);
     }
 
-    samaritan.marquee.prototype.waiting = function(text) {
+    samaritan.Marquee.prototype.waiting = function(text) {
         this._setMode("text");
         this._elText.innerText = "-";
         this._elText.style.opacity = "0";
@@ -107,7 +107,7 @@
         this._elArrow.classList.add("arrow-animation");
     }
 
-    samaritan.marquee.prototype.static = function(value) {
+    samaritan.Marquee.prototype.static = function(value) {
         if (!value) return this.clear();
         this._setMode("text");
         this._elText.innerText = value;
