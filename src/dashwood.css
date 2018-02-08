@@ -18,12 +18,13 @@
     font-size: 23px;
     line-height: 23px;
     min-height: 23px;
-    color: white;
+    color: transparent;
     white-space: nowrap;
     transition-duration: 200ms;
 }
 
 .dashwood-s-marquee.mode-banner .text {
+    color: white;
     background-color: black;
     letter-spacing: 8px;
     padding: 5px 0px 5px 10px;
@@ -32,20 +33,20 @@
 
 .dashwood-s-marquee.mode-text .text {
     color: black;
+    transition: none;
 }
 
 /* samaritan marquee (.line) */
 
 .dashwood-s-marquee .line {
-    display: none;
     margin: 0 auto;
-    width: 30px;
+    width: 0;
     border-bottom: 2px solid black;
-    transition-duration: 200ms;
 }
 
 .dashwood-s-marquee.mode-text .line {
-    display: block;
+    width: 30px;
+    transition-duration: 200ms;
 }
 
 /* samaritan marquee (.arrow) */
