@@ -115,4 +115,35 @@
         this._elArrow.classList.remove("arrow-animation");
     }
 
+    // samaritan.Progress
+
+    samaritan.Progress = function(element, header) {
+        this._el = dashwood.getElement(element);
+        this._el.classList.add("dashwood-s-progress");
+        this._elHeader = dashwood.createElement("div", this._el, "header");
+        this._elHeader.innerText = header || "Loading";
+        this._elInfo = dashwood.createElement("div", this._el, "info");
+        this._elBar = dashwood.createElement("div", this._el, "bar");
+        this._elBarInside = dashwood.createElement("div", this._elBar, "bar-inside");
+        this.progress(0);
+    };
+
+    samaritan.Progress.prototype.header = function(text) {
+        this._elHeader.innerText = text;
+    }
+
+    samaritan.Progress.prototype.info = function(text) {
+        if (text) {
+            this._elInfo.style.display = "block";
+            this._elInfo.innerText = text;
+        } else {
+            this._elInfo.style.display = "";
+            this._elInfo.innerText = "";
+        }
+    }
+
+    samaritan.Progress.prototype.progress = function(value) {
+        this._elBarInside.style.width = (value*100) + "%";
+    }
+
 })();

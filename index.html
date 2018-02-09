@@ -33,5 +33,29 @@
                 "sm.clear()"
             ]);
         </script>
+
+        <h2>dashwood.samaritan.Progress</h2>
+        <div class="dashwood-demo">
+            <div style="padding-top: 120px;">
+                <div id="s-progress"></div>
+            </div>
+            <div id="s-progress-controls"></div>
+        </div>
+        <script>
+            var s_marquee_demo = new dashwood.DemoControls("s-progress-controls");
+            s_marquee_demo.addTestCode("sp = new dashwood.samaritan.Progress(\"s-progress\", \"LOADING\")", true);
+            s_marquee_demo.addTestCodeArray([
+                "sp.header(\"INSTALLING\")",
+                "sp.info(\"bomb.tar\")",
+                "sp.info(\"ICE-9.exe\")",
+                "sp.info(\"long_name foo-bar foo-bar foo-bar foo-bar foo-bar\")",
+                "sp.info(\"\")",
+                "sp.progress(0)",
+                "sp.progress(0.2)",
+                "sp.progress(0.5)",
+                "sp.progress(0.8)",
+                "sp.progress(1)"
+            ]);
+        </script>
     </body>
 </html>

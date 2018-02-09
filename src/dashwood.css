@@ -75,3 +75,59 @@
     from { border-bottom-color: #330000; }
     to { border-bottom-color: #cc0000; }
 }
+
+/* samaritan progress */
+
+.dashwood-s-progress {
+    font-family: "Mono MMM 5";
+    font-size: 23px;
+    width: 650px;
+    margin: 0 auto;
+}
+
+/* samaritan progress (.header) */
+
+.dashwood-s-progress .header {
+    display: inline-block;
+    color: white;
+    background-color: black;
+    letter-spacing: 8px;
+    padding: 5px 0px 5px 10px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+}
+
+.dashwood-s-progress .header::after {
+    content: "_";
+    animation: fast-flash 300ms linear infinite;
+}
+
+@keyframes fast-flash {
+    0% { opacity: 1; }
+    49% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* samaritan progress (.info) */
+
+.dashwood-s-progress .info {
+    display: none;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* samaritan progress (.bar) */
+
+.dashwood-s-progress .bar {
+    border: 2px solid black;
+    padding: 3px;
+}
+
+.dashwood-s-progress .bar .bar-inside {
+    background: black;
+    width: 0;
+    height: 25px;
+    transition-duration: 500ms;
+}
