@@ -1,1 +1,2 @@
-console.log('hi');
+import './components/marquee';
+import './components/progress';

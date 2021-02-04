@@ -1,10 +1,67 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link type="text/css" href="src-legacy/dashwood-demo.css" rel="stylesheet">
+        <script type="text/javascript" src="src-legacy/dashwood.js"></script>
+        <script type="text/javascript" src="src-legacy/dashwood-demo.js"></script>
         <script type="text/javascript" src="dist/bundle.js"></script>
         <title>project dashwood</title>
+        <style>
+            @font-face {
+                font-family: "Mono MMM 5";
+                src: url("src-legacy/monoMMM_5.ttf");
+            }
+        </style>
     </head>
     <body>
         <h1>project dashwood</h1>
+
+        <h2>dw-samaritan-marquee</h2>
+        <div class="dashwood-demo">
+            <div style="padding-top: 120px;">
+                <dw-samaritan-marquee id="s-marquee"></dw-samaritan-marquee>
+            </div>
+            <div id="s-marquee-controls"></div>
+        </div>
+        <script>
+            var s_marquee_demo = new dashwood.DemoControls("s-marquee-controls");
+            s_marquee_demo.addTestCode("sm = document.getElementById(\"s-marquee\")", true);
+            s_marquee_demo.addTestCodeArray([
+                "sm.banner(\"CONNECTION ESTABLISHED\")",
+                "sm.banner(\"TOTAL ACCESS ACHIEVED\")",
+                "sm.banner(\"TEST\")",
+                "sm.animate(\"WHAT ARE YOUR COMMANDS ?\")",
+                "sm.animate(\"I WILL PROTECT YOU NOW\")",
+                "sm.animate(\"YOU CANNOT STOP THE INEVITABLE.\", true)",
+                "sm.static(\"CALCULATING RESPONSE\")",
+                "sm.static(\"TEST\")",
+                "sm.waiting()",
+                "sm.clear()"
+            ]);
+        </script>
+
+        <h2>dw-samaritan-progress</h2>
+        <div class="dashwood-demo">
+            <div style="padding-top: 120px;">
+                <dw-samaritan-progress id="s-progress"></dw-samaritan-progress>
+            </div>
+            <div id="s-progress-controls"></div>
+        </div>
+        <script>
+            var s_marquee_demo = new dashwood.DemoControls("s-progress-controls");
+            s_marquee_demo.addTestCode("sp = document.getElementById(\"s-progress\")", true);
+            s_marquee_demo.addTestCodeArray([
+                "sp.header(\"INSTALLING\")",
+                "sp.info(\"bomb.tar\")",
+                "sp.info(\"ICE-9.exe\")",
+                "sp.info(\"long_name foo-bar foo-bar foo-bar foo-bar foo-bar\")",
+                "sp.info(\"\")",
+                "sp.progress(0)",
+                "sp.progress(0.2)",
+                "sp.progress(0.5)",
+                "sp.progress(0.8)",
+                "sp.progress(1)"
+            ]);
+        </script>
     </body>
 </html>
