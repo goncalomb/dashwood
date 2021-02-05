@@ -1,5 +1,23 @@
 (function() {
 
+    var dashwood = window.dashwood = {};
+
+    dashwood.getElement = function(value) {
+        if (value instanceof HTMLElement) {
+            return value;
+        }
+        return document.getElementById(value);
+    }
+
+    dashwood.createElement = function(tag, parent, clazz) {
+        var el = document.createElement(tag);
+        if (clazz) {
+            el.className = clazz;
+        }
+        parent.appendChild(el);
+        return el;
+    }
+
     dashwood.DemoControls = function(element) {
         this._el = dashwood.getElement(element);
         this._elTable = dashwood.createElement("table", this._el);

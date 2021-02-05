@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link type="text/css" href="src-legacy/dashwood.css" rel="stylesheet">
-        <link type="text/css" href="src-legacy/dashwood-demo.css" rel="stylesheet">
-        <script type="text/javascript" src="src-legacy/dashwood.js"></script>
-        <script type="text/javascript" src="src-legacy/dashwood-demo.js"></script>
+        <link type="text/css" href="src-demo/dashwood-demo.css" rel="stylesheet">
+        <script type="text/javascript" src="src-demo/dashwood.js"></script>
+        <script type="text/javascript" src="src-demo/dashwood-demo.js"></script>
+        <script type="text/javascript" src="dist/bundle.js"></script>
         <title>project dashwood</title>
+        <style>
+            @font-face {
+                font-family: "Mono MMM 5";
+                src: url("src-demo/monoMMM_5.ttf");
+            }
+        </style>
     </head>
     <body>
         <h1>project dashwood</h1>
 
-        <h2>dashwood.samaritan.Marquee</h2>
+        <h2>dw-samaritan-marquee</h2>
         <div class="dashwood-demo">
             <div style="padding-top: 120px;">
-                <div id="s-marquee"></div>
+                <dw-samaritan-marquee id="s-marquee"></dw-samaritan-marquee>
             </div>
             <div id="s-marquee-controls"></div>
         </div>
         <script>
             var s_marquee_demo = new dashwood.DemoControls("s-marquee-controls");
-            s_marquee_demo.addTestCode("sm = new dashwood.samaritan.Marquee(\"s-marquee\")", true);
+            s_marquee_demo.addTestCode("sm = document.getElementById(\"s-marquee\")", true);
             s_marquee_demo.addTestCodeArray([
                 "sm.banner(\"CONNECTION ESTABLISHED\")",
                 "sm.banner(\"TOTAL ACCESS ACHIEVED\")",
@@ -34,16 +40,16 @@
             ]);
         </script>
 
-        <h2>dashwood.samaritan.Progress</h2>
+        <h2>dw-samaritan-progress</h2>
         <div class="dashwood-demo">
             <div style="padding-top: 120px;">
-                <div id="s-progress"></div>
+                <dw-samaritan-progress id="s-progress"></dw-samaritan-progress>
             </div>
             <div id="s-progress-controls"></div>
         </div>
         <script>
             var s_marquee_demo = new dashwood.DemoControls("s-progress-controls");
-            s_marquee_demo.addTestCode("sp = new dashwood.samaritan.Progress(\"s-progress\", \"LOADING\")", true);
+            s_marquee_demo.addTestCode("sp = document.getElementById(\"s-progress\")", true);
             s_marquee_demo.addTestCodeArray([
                 "sp.header(\"INSTALLING\")",
                 "sp.info(\"bomb.tar\")",
