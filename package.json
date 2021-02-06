@@ -4,6 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "prepublishOnly": "webpack --mode=production",
+    "bump": "npm version -m \"Version %s\"",
     "build": "webpack --mode=production",
     "build-d": "webpack --mode=development",
     "build-w": "webpack --mode=development -w",
@@ -13,6 +15,10 @@
     "type": "git",
     "url": "git+https://github.com/goncalomb/dashwood.git"
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "author": "goncalomb",
   "license": "UNLICENSED",
   "bugs": {
