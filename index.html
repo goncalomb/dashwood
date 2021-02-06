@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <link type="text/css" href="src-demo/dashwood-demo.css" rel="stylesheet">
-        <script type="text/javascript" src="src-demo/dashwood.js"></script>
-        <script type="text/javascript" src="src-demo/dashwood-demo.js"></script>
-        <script type="text/javascript" src="dist/dashwood.min.js"></script>
+        <script src="src-demo/dashwood-demo.js"></script>
         <title>project dashwood</title>
         <style>
             @font-face {
@@ -12,6 +10,22 @@
                 src: url("src-demo/monoMMM_5.ttf");
             }
         </style>
+        <script>
+            (function() {
+                const loadJS = (src) => {
+                    const el = document.createElement("script");
+                    el.src = src;
+                    document.head.appendChild(el);
+                };
+                if (location.hostname === "goncalomb.github.io") {
+                    fetch("package.json").then(res => res.json()).then(package => {
+                        loadJS(`https://cdn.jsdelivr.net/npm/dashwood@${package.version}/dist/dashwood.min.js`);
+                    });
+                } else {
+                    loadJS("dist/dashwood.min.js");
+                }
+            })();
+        </script>
     </head>
     <body>
         <h1>project dashwood</h1>
