@@ -77,5 +77,27 @@
                 "sp.progress(1)"
             ]);
         </script>
+
+        <h2>dw-samaritan-box</h2>
+        <div class="dashwood-demo" style="background-color: #eee;">
+            <div style="padding-top: 120px;">
+                <dw-samaritan-box id="s-box">
+                    <p>BETA TEST INITIATING</p>
+                    <p>ELIMINATE THREATS TO NATIONAL SECURITY</p>
+                    <p>ELIMINATE THREATS TO SYSTEM SURVIVAL</p>
+                </dw-samaritan-box>
+            </div>
+            <div id="s-box-controls"></div>
+        </div>
+        <script>
+            var s_box_demo = new dashwood.DemoControls("s-box-controls");
+            s_box_demo.addTestCode("sb = document.getElementById(\"s-box\")", true);
+            s_box_demo.addTestCodeArray([
+                "sb.setAttribute(\"title\", \"Test\")",
+                "sb.setAttribute(\"title\", \"SAMARITAN\")",
+                "sb.setAttribute(\"subtitle\", \"v22222\")",
+                "sb.setAttribute(\"subtitle\", \"v1.0\")"
+            ]);
+        </script>
     </body>
 </html>
