@@ -1,85 +1,83 @@
-const template = document.createElement('template');
-template.innerHTML = `
-<style>
-    .marquee {
-        margin: 0 auto;
-        text-align: center;
-    }
+import { HTMLElementSX } from '../simplex';
 
-    .marquee .text {
-        display: inline-block;
-        font-family: "Mono MMM 5";
-        font-size: 23px;
-        line-height: 23px;
-        min-height: 23px;
-        color: transparent;
-        white-space: nowrap;
-        transition-duration: 200ms;
-    }
+class SamaritanMarquee extends HTMLElementSX {
+    static template = `
+        <style>
+            .marquee {
+                margin: 0 auto;
+                text-align: center;
+            }
 
-    .marquee.mode-banner .text {
-        color: white;
-        background-color: black;
-        letter-spacing: 8px;
-        padding: 5px 0px 5px 10px;
-        border-radius: 2px;
-    }
+            .marquee .text {
+                display: inline-block;
+                font-family: "Mono MMM 5";
+                font-size: 23px;
+                line-height: 23px;
+                min-height: 23px;
+                color: transparent;
+                white-space: nowrap;
+                transition-duration: 200ms;
+            }
 
-    .marquee.mode-text .text {
-        color: black;
-        transition: none;
-    }
+            .marquee.mode-banner .text {
+                color: white;
+                background-color: black;
+                letter-spacing: 8px;
+                padding: 5px 0px 5px 10px;
+                border-radius: 2px;
+            }
 
-    .marquee .line {
-        margin: 0 auto;
-        width: 0;
-        border-bottom: 2px solid black;
-    }
+            .marquee.mode-text .text {
+                color: black;
+                transition: none;
+            }
 
-    .marquee.mode-text .line {
-        width: 30px;
-        transition-duration: 200ms;
-    }
+            .marquee .line {
+                margin: 0 auto;
+                width: 0;
+                border-bottom: 2px solid black;
+            }
 
-    .marquee .arrow {
-        display: none;
-        border-bottom: 10px solid transparent;
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-    }
+            .marquee.mode-text .line {
+                width: 30px;
+                transition-duration: 200ms;
+            }
 
-    .marquee.mode-text .arrow {
-        display: inline-block;
-    }
+            .marquee .arrow {
+                display: none;
+                border-bottom: 10px solid transparent;
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+            }
 
-    .marquee .arrow-animation {
-        border-bottom: 10px solid #330000;
-        -webkit-animation: samaritan-arrow-animation 1000ms alternate infinite linear;
-        animation: samaritan-arrow-animation 1000ms alternate infinite linear;
-    }
+            .marquee.mode-text .arrow {
+                display: inline-block;
+            }
 
-    @-webkit-keyframes samaritan-arrow-animation {
-        from { border-bottom-color: #330000; }
-        to { border-bottom-color: #cc0000; }
-    }
+            .marquee .arrow-animation {
+                border-bottom: 10px solid #330000;
+                -webkit-animation: samaritan-arrow-animation 1000ms alternate infinite linear;
+                animation: samaritan-arrow-animation 1000ms alternate infinite linear;
+            }
 
-    @keyframes samaritan-arrow-animation {
-        from { border-bottom-color: #330000; }
-        to { border-bottom-color: #cc0000; }
-    }
-</style>
-<div class="marquee">
-    <div class="text"></div>
-    <div class="line"></div>
-    <div class="arrow arrow-animation"></div>
-</div>
-`;
+            @-webkit-keyframes samaritan-arrow-animation {
+                from { border-bottom-color: #330000; }
+                to { border-bottom-color: #cc0000; }
+            }
 
-class SamaritanMarquee extends HTMLElement {
-    connectedCallback() {
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
+            @keyframes samaritan-arrow-animation {
+                from { border-bottom-color: #330000; }
+                to { border-bottom-color: #cc0000; }
+            }
+        </style>
+        <div class="marquee">
+            <div class="text"></div>
+            <div class="line"></div>
+            <div class="arrow arrow-animation"></div>
+        </div>
+    `;
 
+    initialize() {
         this._el = this.shadowRoot.querySelector('.marquee');
         this._elText = this.shadowRoot.querySelector('.text');
         this._elLine = this.shadowRoot.querySelector('.line');
