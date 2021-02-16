@@ -1,11 +1,10 @@
 import { HTMLElementSX } from '../simplex';
+import stylesheet from '../stylesheet';
 
 class SamaritanProgress extends HTMLElementSX {
     static template = `
         <style>
             .progress {
-                font-family: "Mono MMM 5";
-                font-size: 23px;
                 width: 650px;
                 margin: 0 auto;
             }
@@ -51,7 +50,7 @@ class SamaritanProgress extends HTMLElementSX {
                 transition-duration: 500ms;
             }
         </style>
-        <div class="progress">
+        <div class="progress dw-font">
             <div class="header"></div>
             <div class="info"></div>
             <div class="bar">
@@ -61,6 +60,8 @@ class SamaritanProgress extends HTMLElementSX {
     `;
 
     initialize() {
+        this.shadowRoot.adoptedStyleSheets = [stylesheet];
+
         this._el = this.shadowRoot.querySelector('.progress');
         this._elHeader = this.shadowRoot.querySelector('.header');
         this._elHeader.innerText = "Loading";

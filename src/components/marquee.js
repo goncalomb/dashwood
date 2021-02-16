@@ -1,4 +1,5 @@
 import { HTMLElementSX } from '../simplex';
+import stylesheet from '../stylesheet';
 
 class SamaritanMarquee extends HTMLElementSX {
     static template = `
@@ -10,9 +11,6 @@ class SamaritanMarquee extends HTMLElementSX {
 
             .marquee .text {
                 display: inline-block;
-                font-family: "Mono MMM 5";
-                font-size: 23px;
-                line-height: 23px;
                 min-height: 23px;
                 color: transparent;
                 white-space: nowrap;
@@ -71,13 +69,15 @@ class SamaritanMarquee extends HTMLElementSX {
             }
         </style>
         <div class="marquee">
-            <div class="text"></div>
+            <div class="text dw-font"></div>
             <div class="line"></div>
             <div class="arrow arrow-animation"></div>
         </div>
     `;
 
     initialize() {
+        this.shadowRoot.adoptedStyleSheets = [stylesheet];
+
         this._el = this.shadowRoot.querySelector('.marquee');
         this._elText = this.shadowRoot.querySelector('.text');
         this._elLine = this.shadowRoot.querySelector('.line');

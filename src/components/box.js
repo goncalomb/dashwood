@@ -1,12 +1,10 @@
 import { HTMLElementSX } from '../simplex';
+import stylesheet from '../stylesheet';
 
 class SamaritanBox extends HTMLElementSX {
     static template = `
         <style>
             .box {
-                font-family: "Mono MMM 5";
-                font-size: 23px;
-
                 width: 650px;
                 margin: 0 auto;
                 border: 4px solid #ccc;
@@ -44,7 +42,7 @@ class SamaritanBox extends HTMLElementSX {
                 border-right: 2px solid #ddd;
             }
         </style>
-        <div class="box">
+        <div class="box dw-font">
             <div class="header"><span class="title"></span> <small class="subtitle"></small></div>
             <div class="main">
                 <slot></slot>
@@ -58,6 +56,8 @@ class SamaritanBox extends HTMLElementSX {
     static observedAttributes = ["title", "subtitle"];
 
     initialize() {
+        this.shadowRoot.adoptedStyleSheets = [stylesheet];
+
         this._elTitle = this.shadowRoot.querySelector('.title');
         this._elSubtitle = this.shadowRoot.querySelector('.subtitle');
         this.update();
