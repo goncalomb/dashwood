@@ -1,73 +1,74 @@
 import { HTMLElementSX } from '../simplex';
-import stylesheet from '../stylesheet';
+import dwStyleSheet from '../stylesheet';
 
 class SamaritanMarquee extends HTMLElementSX {
+    static style = `
+        .marquee {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .marquee .text {
+            display: inline-block;
+            min-height: 23px;
+            color: transparent;
+            white-space: nowrap;
+            transition-duration: 200ms;
+        }
+
+        .marquee.mode-banner .text {
+            color: white;
+            background-color: black;
+            letter-spacing: 8px;
+            padding: 5px 0px 5px 10px;
+            border-radius: 2px;
+        }
+
+        .marquee.mode-text .text {
+            color: black;
+            transition: none;
+        }
+
+        .marquee .line {
+            margin: 0 auto;
+            width: 0;
+            border-bottom: 2px solid black;
+        }
+
+        .marquee.mode-text .line {
+            width: 30px;
+            transition-duration: 200ms;
+        }
+
+        .marquee .arrow {
+            display: none;
+            border-bottom: 10px solid transparent;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+        }
+
+        .marquee.mode-text .arrow {
+            display: inline-block;
+        }
+
+        .marquee .arrow-animation {
+            border-bottom: 10px solid #330000;
+            -webkit-animation: samaritan-arrow-animation 1000ms alternate infinite linear;
+            animation: samaritan-arrow-animation 1000ms alternate infinite linear;
+        }
+
+        @-webkit-keyframes samaritan-arrow-animation {
+            from { border-bottom-color: #330000; }
+            to { border-bottom-color: #cc0000; }
+        }
+
+        @keyframes samaritan-arrow-animation {
+            from { border-bottom-color: #330000; }
+            to { border-bottom-color: #cc0000; }
+        }
+    `;
+
     static template = `
-        <style>
-            .marquee {
-                margin: 0 auto;
-                text-align: center;
-            }
-
-            .marquee .text {
-                display: inline-block;
-                min-height: 23px;
-                color: transparent;
-                white-space: nowrap;
-                transition-duration: 200ms;
-            }
-
-            .marquee.mode-banner .text {
-                color: white;
-                background-color: black;
-                letter-spacing: 8px;
-                padding: 5px 0px 5px 10px;
-                border-radius: 2px;
-            }
-
-            .marquee.mode-text .text {
-                color: black;
-                transition: none;
-            }
-
-            .marquee .line {
-                margin: 0 auto;
-                width: 0;
-                border-bottom: 2px solid black;
-            }
-
-            .marquee.mode-text .line {
-                width: 30px;
-                transition-duration: 200ms;
-            }
-
-            .marquee .arrow {
-                display: none;
-                border-bottom: 10px solid transparent;
-                border-left: 6px solid transparent;
-                border-right: 6px solid transparent;
-            }
-
-            .marquee.mode-text .arrow {
-                display: inline-block;
-            }
-
-            .marquee .arrow-animation {
-                border-bottom: 10px solid #330000;
-                -webkit-animation: samaritan-arrow-animation 1000ms alternate infinite linear;
-                animation: samaritan-arrow-animation 1000ms alternate infinite linear;
-            }
-
-            @-webkit-keyframes samaritan-arrow-animation {
-                from { border-bottom-color: #330000; }
-                to { border-bottom-color: #cc0000; }
-            }
-
-            @keyframes samaritan-arrow-animation {
-                from { border-bottom-color: #330000; }
-                to { border-bottom-color: #cc0000; }
-            }
-        </style>
         <div class="marquee">
             <div class="text dw-font"></div>
             <div class="line"></div>
@@ -75,9 +76,9 @@ class SamaritanMarquee extends HTMLElementSX {
         </div>
     `;
 
-    initialize() {
-        this.shadowRoot.adoptedStyleSheets = [stylesheet];
+    static styleSheets = [dwStyleSheet];
 
+    initialize() {
         this._el = this.shadowRoot.querySelector('.marquee');
         this._elText = this.shadowRoot.querySelector('.text');
         this._elLine = this.shadowRoot.querySelector('.line');

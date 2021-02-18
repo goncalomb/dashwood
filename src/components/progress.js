@@ -1,55 +1,56 @@
 import { HTMLElementSX } from '../simplex';
-import stylesheet from '../stylesheet';
+import dwStyleSheet from '../stylesheet';
 
 class SamaritanProgress extends HTMLElementSX {
+    static style = `
+        .progress {
+            width: 650px;
+            margin: 0 auto;
+        }
+
+        .progress .header {
+            display: inline-block;
+            color: white;
+            background-color: black;
+            letter-spacing: 8px;
+            padding: 5px 0px 5px 10px;
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
+
+        .progress .header::after {
+            content: "_";
+            animation: fast-flash 300ms linear infinite;
+        }
+
+        @keyframes fast-flash {
+            0% { opacity: 1; }
+            49% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        .progress .info {
+            display: none;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .progress .bar {
+            border: 2px solid black;
+            padding: 3px;
+        }
+
+        .progress .bar .bar-inside {
+            background: black;
+            width: 0;
+            height: 25px;
+            transition-duration: 500ms;
+        }
+    `;
+
     static template = `
-        <style>
-            .progress {
-                width: 650px;
-                margin: 0 auto;
-            }
-
-            .progress .header {
-                display: inline-block;
-                color: white;
-                background-color: black;
-                letter-spacing: 8px;
-                padding: 5px 0px 5px 10px;
-                border-radius: 2px;
-                margin-bottom: 8px;
-            }
-
-            .progress .header::after {
-                content: "_";
-                animation: fast-flash 300ms linear infinite;
-            }
-
-            @keyframes fast-flash {
-                0% { opacity: 1; }
-                49% { opacity: 1; }
-                50% { opacity: 0; }
-                100% { opacity: 0; }
-            }
-
-            .progress .info {
-                display: none;
-                margin-bottom: 8px;
-                white-space: nowrap;
-                overflow: hidden;
-            }
-
-            .progress .bar {
-                border: 2px solid black;
-                padding: 3px;
-            }
-
-            .progress .bar .bar-inside {
-                background: black;
-                width: 0;
-                height: 25px;
-                transition-duration: 500ms;
-            }
-        </style>
         <div class="progress dw-font">
             <div class="header"></div>
             <div class="info"></div>
@@ -59,9 +60,9 @@ class SamaritanProgress extends HTMLElementSX {
         </div>
     `;
 
-    initialize() {
-        this.shadowRoot.adoptedStyleSheets = [stylesheet];
+    static styleSheets = [dwStyleSheet];
 
+    initialize() {
         this._el = this.shadowRoot.querySelector('.progress');
         this._elHeader = this.shadowRoot.querySelector('.header');
         this._elHeader.innerText = "Loading";
