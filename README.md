@@ -13,8 +13,6 @@ Also, here is an even older demo (the original idea):
 
 https://samaritan.goncalomb.com/ ([source](https://github.com/goncalomb/Samaritan))
 
-I haven't chosen an open-source license yet, for now:
+## License
 
-All rights reserved.
-
-Copyright (c) 2018, 2021 Gonçalo Baltazar <me@goncalomb.com>
+dashwood is released under the terms of the MIT License. See [LICENSE.txt](LICENSE.txt) for details.
